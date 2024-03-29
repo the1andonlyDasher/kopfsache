@@ -1,0 +1,239 @@
+@use '../media-queries.scss' as *;
+/* base classes */
+
+%flex-full {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+%absolute-full {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%top-left-full {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+%trans {
+  transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+%no-space {
+  padding: 0;
+  margin: 0;
+}
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* base classes */
+
+#c54 {
+  display: none;
+  width: 100%;
+  @include mq(large) {
+    display: block;
+  }
+}
+
+#c55 {
+  width: 100%;
+  display: block;
+  @include mq(large) {
+    display: none;
+  }
+}
+
+.invalid-feedback {
+  color: var(--clr-signal-red-200);
+  font-weight: 500;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0;
+  background-color: transparent;
+  color: var(--clr-dark-color);
+  border-radius: 2px;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: var(--space-s);
+  text-align: left;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  @extend %flex-center;
+  flex: 1 1 100%;
+  margin: 0 auto 0 0;
+  flex-direction: column;
+  width: 100%;
+  margin: var(--space-m) 0 0 0;
+  flex: 1 1 auto;
+  min-width: 250px;
+  color: var(--clr-dark-color);
+}
+
+.form div {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form :is(#name, #email) {
+  max-width: 500px;
+}
+
+fieldset {
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 50%;
+  border-radius: 2px;
+  border: none;
+  background-color: transparent;
+}
+
+legend {
+  padding: 0.5rem;
+}
+
+.form :is(label, select, input, textarea, .input) {
+  position: relative;
+  line-height: 1.5;
+  text-align: left;
+  outline: none;
+  margin: 0;
+}
+
+.form .input {
+  display: grid;
+}
+
+.form label {
+  font-weight: 500;
+  padding-bottom: var(--space-xs);
+  font-size: var(--fs-text);
+  color: var(--clr-contrast-300);
+}
+
+.form :is(input, select, textarea) {
+  padding: var(--space-xs);
+  font-size: var(--fs-text-small);
+  font-weight: 500;
+}
+
+.form input:active {
+  border: 2px solid rgb(79 70 229);
+}
+
+.form input:focus-visible,
+textarea:focus-visible {
+  border: 2px solid rgb(79 70 229);
+}
+
+.form .btn-inner {
+  margin: 2rem auto 0 0;
+}
+
+.form .btn-group {
+  @extend %flex-center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.form a {
+  margin: 1rem auto 0 0;
+}
+
+.form .btn__primary {
+  margin-top: var(--space-m);
+  outline: none;
+  width: 100%;
+  max-width: 300px;
+  margin: 2rem auto 0 0;
+  flex: unset;
+}
+
+.form .btn-group .btn-group:nth-child(n + 2) {
+  margin-left: 1rem;
+}
+
+.error {
+  border: 2px solid var(--clr-signal-red-100) !important;
+  color: var(--clr-signal-red-100);
+}
+
+.help-block {
+  border: none !important;
+  border-bottom: 2px dotted var(--clr-signal-red-100);
+  color: var(--clr-signal-red-100);
+}
+
+//---
+
+.thanks__message {
+  @extend %flex-center;
+  justify-content: flex-start;
+  display: none;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: baseline;
+  text-align: center;
+  width: 100%;
+  padding: var(--space-m) 0;
+  font-size: var(--fs-sub-big);
+  color: var(--clr-main2-color);
+  h3 {
+    font-size: var(--fs-text);
+  }
+}
+
+// ---- additional styling ----
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--clr-contrast-600);
+}
+
+.form :is(select, input, textarea) {
+  background-color: #050505;
+  border: 1px solid #222;
+  border-radius: 2px;
+  color: var(--clr-contrast-200);
+}
+
+// form[method="post"]{
+//   @extend %flex-center;
+//   flex: 1 1 100%;
+//   margin: 0 auto 0 0;
+//   flex-direction: column;
+//   width: 100%;
+//   margin: var(--space-m) 0 0 0;
+//   flex: 1 1 auto;
+//   min-width: 250px;
+//   color: var(--clr-dark-color);
+// }

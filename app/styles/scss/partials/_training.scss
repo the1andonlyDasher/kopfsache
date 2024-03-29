@@ -1,0 +1,242 @@
+@use "../media-queries.scss" as *;
+
+%flex-full {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+%absolute-full {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%top-left-full {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%trans {
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
+.photo_large {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 15px solid var(--clr-bright-color);
+  margin: 0 auto;
+  height: 250px;
+  width: 250px;
+  @include mq(small) {
+    height: 350px;
+    width: 350px;
+  }
+  @include mq(medium) {
+    height: 400px;
+    width: 400px;
+  }
+  @include mq(large) {
+    margin-left: 0;
+  }
+  @include mq(xl) {
+    height: 450px;
+    width: 450px;
+  }
+  img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0px;
+    object-fit: cover;
+    color: transparent;
+  }
+}
+
+.text {
+  flex-direction: unset;
+  align-items: flex-start;
+  gap: 5%;
+  margin: 2rem 0;
+  & div {
+    flex: 1 1 47.5% !important;
+    p {
+      line-height: 1.7;
+    }
+  }
+}
+
+.mobile {
+  display: flex;
+  @include mq(large) {
+    display: none;
+  }
+}
+
+.desktop {
+  display: none;
+  @include mq(large) {
+    display: flex;
+  }
+}
+
+.detail__hero {
+  .photo_large {
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 15px solid var(--clr-bright-color);
+    margin: 0 auto;
+    height: 250px;
+    width: 250px;
+    @include mq(small) {
+      height: 350px;
+      width: 350px;
+    }
+    @include mq(medium) {
+      height: 400px;
+      width: 400px;
+    }
+    @include mq(large) {
+      margin-right: 0;
+    }
+    @include mq(xl) {
+      height: 450px;
+      width: 450px;
+    }
+    img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      inset: 0px;
+      object-fit: cover;
+      color: transparent;
+    }
+  }
+  .first {
+    scale: 0.6;
+    top: 0;
+    right: -10%;
+    z-index: -2;
+  
+    @include mq(medium) {
+      scale: 0.6;
+      top: 0;
+      right: 0%;
+      z-index: -2;
+    }
+    @include mq(large) {
+      scale: 0.6;
+      top: -50%;
+      right: 12%;
+      z-index: -2;
+    }
+    @include mq(xl) {
+      scale: 0.6;
+      top: -50%;
+      right: 10%;
+      z-index: -2;
+    }
+  }
+  .second {
+    scale: 0.6;
+    top: 0;
+    left: -10%;
+    z-index: -1;
+  
+    @include mq(medium) {
+      scale: 0.6;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    @include mq(large) {
+      scale: 0.5;
+      top: -45%;
+      right: -20%;
+      z-index: -1;
+    }
+    @include mq(xl) {
+      scale: 0.5;
+      top: -40%;
+      right: -25%;
+      z-index: -2;
+    }
+  }
+  .third {
+    scale: 0.8;
+  }
+}
+
+
+
+.detail {
+  margin: 1rem 0;
+  margin-left: 0;
+  margin-right: auto;
+  font-size: var(--fs-text);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  color: var(--clr-dark-color);
+  svg {
+    margin-right: 1rem;
+    path {
+      fill: var(--clr-main2-color);
+    }
+  }
+}
+
+.blob__detail{
+  @extend %top-left-full;
+  position: absolute;
+  background-color: var(--clr-bright-color);
+  z-index: -2;
+  display: none;
+  @include mq(medium){
+    display: block;
+  }
+}
+
+.blob__mobile__detail{
+  @extend %top-left-full;
+  position: absolute;
+  background-color: var(--clr-bright-color);
+  z-index: -2;
+  @include mq(medium){
+    display: none;
+  }
+}
+
+.svg__wrapper{
+  @extend %flex-center, %top-left-full;
+  position: absolute;
+  svg{
+    display: flex;
+    height: 100%;
+  }
+}
+
+.arrow__Down{
+  color:"var(--clr-main2-color)";
+  scale: 2;
+  width: 2rem;
+  aspect-ratio: 1;
+  margin:0 auto;
+  color: var(--clr-main2-color)
+}

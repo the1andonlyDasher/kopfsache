@@ -1,0 +1,99 @@
+@use '../media-queries.scss' as *;
+
+/* base classes */
+
+%flex-full {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+%absolute-full {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+%top-left-full {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+%trans {
+  transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+}
+
+%no-space {
+  padding: 0;
+  margin: 0;
+}
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%basic-container {
+  border-radius: 2px;
+  box-shadow: 3px 3px 10px rgb(0 0 0 / 20%);
+}
+
+.product-grid {
+  grid-template-areas:
+    'product'
+    'name'
+    'desc'
+    'buy';
+  @include mq(medium) {
+    grid-template-areas: 
+    'product product'
+    'name buy'
+    'desc desc';
+  }
+  @include mq(large) {
+    grid-template-areas: 
+    'product name'
+    'product buy'
+    'product desc'
+  }
+}
+
+.product-grid  .product{
+    grid-area: product;
+}
+.product-grid  .desc{
+    grid-area: desc;
+}
+.product-grid  .name{
+    grid-area: name;
+}
+.product-grid  .buy{
+    grid-area: buy;
+}
+
+.model-viewer{
+  width: 90%!important;
+  height: 90%!important;
+}
+
+.product-card {
+  grid-template-columns: 65% 35%;
+  grid-template-areas: "text img";
+}
+
+.p-text{
+  grid-area: text;
+}
+
+.p-img{
+  grid-area: img;
+}

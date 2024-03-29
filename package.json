@@ -5,11 +5,15 @@
   "version": "1.0.1",
   "scripts": {
     "build": "shopify hydrogen build",
-    "dev": "shopify hydrogen dev --worker --codegen",
+    "dev": "npm run build:css && concurrently -m -g -r npm:dev:css \"shopify hydrogen dev\" --worker --codegen",
+    "build:css": "postcss app/styles/tailwind.css -o app/styles/tailwind-build.css --env production",
+    "dev:css": "postcss app/styles/tailwind.css -o app/styles/tailwind-build.css -w",
     "preview": "npm run build && shopify hydrogen preview --worker",
     "lint": "eslint --no-error-on-unmatched-pattern --ext .js,.ts,.jsx,.tsx .",
     "typecheck": "tsc --noEmit",
-    "codegen": "shopify hydrogen codegen"
+    "codegen": "shopify hydrogen codegen",
+    "prefix-sass": "postcss app/styles/unfixed/style.css -u autoprefixer -d app/styles",
+    "sass-watch": "sass --watch --no-source-map  app/styles/scss:app/styles/unfixed"
   },
   "prettier": "@shopify/prettier-config",
   "dependencies": {
@@ -26,6 +30,15 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@emailjs/browser": "^3.12.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@headlessui/react": "^1.7.18",
+    "@react-three/drei": "^9.96.4",
+    "@react-three/fiber": "^8.15.15",
     "@remix-run/dev": "2.1.0",
     "@remix-run/eslint-config": "2.1.0",
     "@shopify/oxygen-workers-types": "^4.0.0",
@@ -36,14 +49,26 @@
     "@types/eslint": "^8.4.10",
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
+    "autoprefixer": "^10.4.17",
+    "concurrently": "^8.2.2",
     "eslint": "^8.20.0",
     "eslint-plugin-hydrogen": "0.12.2",
+    "framer-motion": "^11.0.3",
+    "framer-motion-3d": "^11.0.3",
+    "jotai": "^2.6.3",
+    "maath": "^0.10.7",
+    "popmotion": "^11.0.5",
     "postcss": "^8.4.21",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.2.0",
     "prettier": "^2.8.4",
+    "sass": "^1.70.0",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5.2.2"
+    "three": "^0.160.1",
+    "tunnel-rat": "^0.1.2",
+    "typescript": "^5.2.2",
+    "wouter": "^2.12.1"
   },
   "engines": {
     "node": ">=18.0.0"
